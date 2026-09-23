@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Palette Zone 설문조사 허브 (Survey Hub)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font (Inter & Noto Sans KR) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+                    },
+                    colors: {
+                        github: {
+                            dark: '#0d1117',
+                            card: '#161b22',
+                            border: '#30363d',
+                            hover: '#21262d',
+                            accent: '#238636',
+                            blue: '#58a6ff',
+                            text: '#c9d1d9',
+                            muted: '#8b949e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+        .github-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .github-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(88, 166, 255, 0.15);
+        }
+        .glass-header {
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-blue-500 selection:text-white">
+
+    <!-- GitHub Background Pattern Accent -->
+    <div class="fixed inset-0 pointer-events-none opacity-20 z-0 bg-[radial-gradient(#30363d_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 w-full border-b border-github-border glass-header">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <!-- Home Button Added -->
+                <a href="../index.html" class="px-3 py-1.5 text-xs font-medium rounded-md bg-github-hover hover:bg-github-border border border-github-border text-github-text transition flex items-center gap-1.5" title="메인 홈으로 이동">
+                    <i class="fa-solid fa-house text-github-blue"></i>
+                    <span class="hidden sm:inline">홈</span>
+                </a>
+                <div class="h-4 w-px bg-github-border hidden sm:block"></div>
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-emerald-600 to-blue-600 flex items-center justify-center shadow-lg text-white font-bold text-lg">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-github-border text-github-blue font-medium">llihaji78-lang</span>
+                            <span class="text-xs text-github-muted">/</span>
+                            <span class="text-sm font-semibold text-white">FNDA-2</span>
+                        </div>
+                        <h1 class="text-xs text-github-muted hidden sm:block">이마트 신촌점 K-Palette Zone 사전 수요조사 포털</h1>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <a href="https://github.com/llihaji78-lang/FNDA-2" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 text-xs font-medium rounded-md bg-github-hover hover:bg-github-border border border-github-border text-github-text transition flex items-center gap-2">
+                    <i class="fa-brands fa-github"></i>
+                    <span class="hidden sm:inline">Repository</span>
+                </a>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800 flex items-center gap-1.5 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    설문 진행 중
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        
+        <!-- Hero Section -->
+        <section class="mb-10 text-center sm:text-left border-b border-github-border pb-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-xs font-mono text-github-blue mb-2 bg-blue-950/50 px-3 py-1 rounded-full border border-blue-900/50">
+                        <i class="fa-solid fa-square-poll-vertical"></i>
+                        <span>K-Palette Zone Research Hub</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                        K-Palette Zone 사전 수요조사 설문모음
+                    </h2>
+                    <p class="mt-2 text-sm sm:text-base text-github-muted max-w-2xl">
+                        이마트 신촌점 및 K-Palette Zone 관련 설문조사 항목입니다.<br class="hidden sm:block"> 카드를 클릭하시면 해당 구글 폼 설문 페이지로 **새 창**에서 연결됩니다.
+                    </p>
+                </div>
+                
+                <!-- Quick Stats Badge -->
+                <div class="flex items-center justify-center sm:justify-start gap-4 text-xs text-github-muted bg-github-card p-3 rounded-xl border border-github-border self-start">
+                    <div class="text-center px-2">
+                        <div class="text-lg font-bold text-white" id="total-count">4</div>
+                        <div>총 설문 수</div>
+                    </div>
+                    <div class="h-8 w-px bg-github-border"></div>
+                    <div class="text-center px-2">
+                        <div class="text-lg font-bold text-emerald-400">100%</div>
+                        <div>온라인 응답 가능</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls Bar: Search & Tag Filter -->
+            <div class="mt-8 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+                <!-- Search Input -->
+                <div class="relative flex-grow max-w-md">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-github-muted text-sm"></i>
+                    <input type="text" id="search-input" placeholder="설문 제목 또는 키워드 검색..." 
+                        class="w-full pl-10 pr-4 py-2 bg-github-dark border border-github-border rounded-lg text-sm text-white placeholder-github-muted focus:outline-none focus:border-github-blue transition">
+                </div>
+
+                <!-- Filter Category Buttons -->
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 text-xs scrollbar-none" id="filter-buttons">
+                    <button data-filter="all" class="filter-btn active px-3 py-1.5 rounded-lg border border-github-blue bg-blue-950/60 text-github-blue font-medium transition whitespace-nowrap">
+                        전체 보기
+                    </button>
+                    <button data-filter="신촌점" class="filter-btn px-3 py-1.5 rounded-lg border border-github-border hover:border-github-muted text-github-muted hover:text-white transition whitespace-nowrap">
+                        이마트 신촌점
+                    </button>
+                    <button data-filter="글로벌" class="filter-btn px-3 py-1.5 rounded-lg border border-github-border hover:border-github-muted text-github-muted hover:text-white transition whitespace-nowrap">
+                        외국인/글로벌
+                    </button>
+                    <button data-filter="사전조사" class="filter-btn px-3 py-1.5 rounded-lg border border-github-border hover:border-github-muted text-github-muted hover:text-white transition whitespace-nowrap">
+                        사전 수요조사
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Survey Cards Grid -->
+        <section>
+            <div id="survey-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Cards will be populated by JS or static templates -->
+            </div>
+
+            <!-- Empty Search Result -->
+            <div id="no-results" class="hidden text-center py-16 bg-github-card border border-github-border rounded-xl">
+                <i class="fa-solid fa-folder-open text-4xl text-github-muted mb-3"></i>
+                <h3 class="text-base font-semibold text-white">검색 결과가 없습니다</h3>
+                <p class="text-xs text-github-muted mt-1">다른 검색어나 필터를 선택해 주세요.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-github-card border border-github-blue text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-message" class="text-xs font-medium">링크가 클립보드에 복사되었습니다!</span>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div id="qr-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-github-card border border-github-border rounded-2xl max-w-sm w-full p-6 text-center shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeQrModal()" class="absolute top-4 right-4 text-github-muted hover:text-white p-1 rounded-lg">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-blue-950 border border-blue-800 flex items-center justify-center text-github-blue">
+                <i class="fa-solid fa-qrcode text-xl"></i>
+            </div>
+            <h3 id="qr-modal-title" class="text-sm font-bold text-white mb-1 line-clamp-2">설문 제목</h3>
+            <p class="text-xs text-github-muted mb-4">모바일 카메라로 스캔하여 설문에 참여하세요</p>
+            
+            <div class="bg-white p-4 rounded-xl inline-block border border-gray-200 shadow-inner mb-4">
+                <img id="qr-image" src="" alt="QR Code" class="w-48 h-48 mx-auto">
+            </div>
+
+            <div class="flex gap-2">
+                <button onclick="closeQrModal()" class="w-full py-2 bg-github-hover hover:bg-github-border border border-github-border rounded-lg text-xs font-medium text-white transition">
+                    닫기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-github-border bg-github-dark py-8 mt-12 text-xs text-github-muted">
+        <div class="max-w-6xl mx-auto px-4 text-center sm:flex sm:justify-between sm:items-center">
+            <div class="mb-4 sm:mb-0">
+                <p class="font-medium text-github-text">FNDA-2 &copy; K-Palette Zone Research Hub</p>
+                <p class="text-[11px] text-github-muted mt-0.5">이마트 신촌점 K-Palette Zone 프로젝트 사전 수요조사 전용 모음 페이지</p>
+            </div>
+            <div class="flex justify-center space-x-4">
+                <span class="hover:text-github-text transition cursor-pointer" onclick="scrollToTop()">
+                    <i class="fa-solid fa-arrow-up mr-1"></i> 맨 위로
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Survey Data Definition
+        const surveys = [
+            {
+                id: 1,
+                title: "이마트 신촌점 K-Palette Zone 사전 수요조사 설문",
+                url: "https://docs.google.com/forms/d/e/1FAIpQLSftfpLwlLCdN11m513ZM2xdNgmMHeJnDs3HXTnhxM_7eDEb9w/viewform?usp=sharing&ouid=111461572944256322957",
+                target: "이마트 신촌점 방문 고객 및 사전 관심 고객",
+                time: "약 2~3분 소요",
+                category: ["신촌점", "사전조사"],
+                badge: "주요 설문",
+                badgeColor: "bg-emerald-950 text-emerald-400 border-emerald-800",
+                icon: "fa-store",
+                description: "이마트 신촌점 내 K-Palette Zone 구성을 위해 고객분들의 생생한 의견을 수렴합니다."
+            },
+            {
+                id: 2,
+                title: "[K-Palette Zone] 사전 수요조사 (Pre-Launch Survey)",
+                url: "https://docs.google.com/forms/d/e/1FAIpQLScxolG0so7GQPpUXDdVRcF12WFmhGMJfTmw1kxnWUkPSVh9OA/viewform",
+                target: "K-Culture 및 뷰티/라이프스타일 관심 고객",
+                time: "약 2분 소요",
+                category: ["글로벌", "사전조사"],
+                badge: "Pre-Launch",
+                badgeColor: "bg-purple-950 text-purple-300 border-purple-800",
+                icon: "fa-rocket",
+                description: "K-Palette Zone 정식 론칭 전 선호 브랜드 및 희망 서비스 상품군을 조사합니다."
+            },
+            {
+                id: 3,
+                title: "한국 여행 중 식품 쇼핑 경험 및 K-Palette Zone 이용 의향 조사",
+                url: "https://forms.gle/LfQtqiei7zC3sCiQ6",
+                target: "방한 외국인 관광객 & 한국 여행 경험자",
+                time: "약 3분 소요",
+                category: ["글로벌", "신촌점"],
+                badge: "글로벌/관광",
+                badgeColor: "bg-blue-950 text-blue-300 border-blue-800",
+                icon: "fa-plane-departure",
+                description: "한국 방문 중 식품 구매 트렌드 분석 및 K-Palette Zone 글로벌 이용 의향을 파악합니다."
+            },
+            {
+                id: 4,
+                title: "[이마트 신촌점] K-Palette Zone 사전 수요조사",
+                url: "https://docs.google.com/forms/d/e/1FAIpQLSe8BQZNIrFY2qbNb3gQlCK_t0XHSl1qva1QkAl1AonViCqr7w/viewform?usp=header",
+                target: "신촌 상권 이용객 및 인근 지역 주민",
+                time: "약 2분 소요",
+                category: ["신촌점", "사전조사"],
+                badge: "신촌점 고객",
+                badgeColor: "bg-amber-950 text-amber-300 border-amber-800",
+                icon: "fa-location-dot",
+                description: "이마트 신촌점 방문 맞춤형 K-Palette Zone 상품 라인업 조사를 위한 설문입니다."
+            }
+        ];
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        // Render Cards Function
+        function renderCards() {
+            const container = document.getElementById('survey-grid');
+            const noResults = document.getElementById('no-results');
+            container.innerHTML = '';
+
+            const filtered = surveys.filter(survey => {
+                const matchesFilter = currentFilter === 'all' || survey.category.includes(currentFilter);
+                const matchesSearch = survey.title.toLowerCase().includes(currentSearch.toLowerCase()) || 
+                                      survey.description.toLowerCase().includes(currentSearch.toLowerCase());
+                return matchesFilter && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            filtered.forEach(survey => {
+                const card = document.createElement('div');
+                card.className = "github-card rounded-xl p-5 sm:p-6 flex flex-col justify-between group cursor-pointer relative overflow-hidden";
+                
+                // Clicking the card anywhere opens in new window
+                card.onclick = (e) => {
+                    // Prevent opening if copy or QR code button was clicked
+                    if (e.target.closest('.action-btn')) return;
+                    window.open(survey.url, '_blank', 'noopener,noreferrer');
+                };
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Top Header Tag & Badge -->
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${survey.badgeColor} flex items-center gap-1.5">
+                                <i class="fa-solid ${survey.icon} text-[10px]"></i>
+                                ${survey.badge}
+                            </span>
+                            <div class="flex items-center space-x-1">
+                                <button onclick="openQrModal('${survey.title}', '${survey.url}')" title="QR 코드 보기" class="action-btn text-github-muted hover:text-white p-1.5 rounded-md hover:bg-github-hover transition">
+                                    <i class="fa-solid fa-qrcode text-xs"></i>
+                                </button>
+                                <button onclick="copyToClipboard('${survey.url}')" title="링크 복사" class="action-btn text-github-muted hover:text-white p-1.5 rounded-md hover:bg-github-hover transition">
+                                    <i class="fa-regular fa-copy text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-github-blue transition-colors flex items-start gap-2 leading-snug">
+                            <span>${survey.title}</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-github-muted group-hover:text-github-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform mt-1 flex-shrink-0"></i>
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-github-muted mt-2.5 line-clamp-2 leading-relaxed">
+                            ${survey.description}
+                        </p>
+                    </div>
+
+                    <!-- Bottom Details -->
+                    <div class="mt-6 pt-4 border-t border-github-border/60 flex flex-col gap-3">
+                        <div class="flex items-center justify-between text-xs text-github-muted">
+                            <div class="flex items-center gap-1.5">
+                                <i class="fa-regular fa-user text-github-blue"></i>
+                                <span class="truncate max-w-[180px] sm:max-w-[220px]">${survey.target}</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-emerald-400 font-mono text-[11px]">
+                                <i class="fa-regular fa-clock"></i>
+                                <span>${survey.time}</span>
+                            </div>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <div class="w-full py-2.5 px-4 rounded-lg bg-github-hover group-hover:bg-github-accent text-white font-medium text-xs flex items-center justify-center gap-2 border border-github-border group-hover:border-emerald-600 transition-all duration-200">
+                            <span>설문 참여하기 (새 창으로 이동)</span>
+                            <i class="fa-solid fa-external-link-alt text-[10px]"></i>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Copy to clipboard helper
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast('설문 링크가 클립보드에 복사되었습니다!');
+        }
+
+        // Toast display function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        // QR Code Modal Handler
+        function openQrModal(title, url) {
+            const modal = document.getElementById('qr-modal');
+            const modalTitle = document.getElementById('qr-modal-title');
+            const qrImage = document.getElementById('qr-image');
+
+            modalTitle.innerText = title;
+            // Generate QR Code via reliable free API
+            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeQrModal() {
+            document.getElementById('qr-modal').classList.add('hidden');
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Event Listeners Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCards();
+
+            // Search input listener
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value;
+                renderCards();
+            });
+
+            // Filter buttons listener
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => {
+                        b.classList.remove('active', 'border-github-blue', 'bg-blue-950/60', 'text-github-blue');
+                        b.classList.add('border-github-border', 'text-github-muted');
+                    });
+
+                    btn.classList.add('active', 'border-github-blue', 'bg-blue-950/60', 'text-github-blue');
+                    btn.classList.remove('border-github-border', 'text-github-muted');
+
+                    currentFilter = btn.getAttribute('data-filter');
+                    renderCards();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
